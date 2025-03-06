@@ -1,90 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Page</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Haas+Grotesk+Display:wght@500;700&display=swap');
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    text-align: center;
-    background-color: #f8f8f8;
-    margin: 0;
-    font-family: 'Haas Grotesk Display', sans-serif;
-  }
-  nav {
-    width: 100%;
-    padding: 15px 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  nav a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-size: 12px;
-  }
-  .container {
-    padding-top: 80px;
-  }
-  .logo {
-    width: 120px;
-    margin: 10px auto;
-  }
-  .project-content {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    text-align: left;
-  }
-  footer {
-    width: 100%;
-    color: rgb(1, 1, 1);
-    text-alrgb(0, 0, 0)center;
-    padding: 15px 0;
-    margin-top: 40px;
-    font-size: 12px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mirrored Confessional</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Haas+Grotesk+Display:wght@500;700&display=swap');
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      text-align: center;
+      background-color: #f8f8f8;
+      margin: 0;
+      font-family: 'Haas Grotesk Display', sans-serif;
+    }
+    nav {
+      width: 100%;
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .container {
+      padding-top: 80px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .logo {
+      width: 120px;
+      display: block;
+      margin: 10px auto;
+    }
+    .project-content {
+      text-align: left;
+      padding: 20px;
+    }
+    .carousel {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .carousel img {
+      width: 100%;
+      display: none;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .carousel-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .carousel-buttons button {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .media-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    video, audio {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 10px;
+    }
+    footer {
+      width: 100%;
+      color: white;
+      text-align: center;
+      background-color: #333;
+      padding: 15px 0;
+      margin-top: 40px;
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
+
 <nav>
-  <div class="left">
-    <a href="index.html">&larr; BACK</a>
-  </div>
-  <div class="right">
-    
-  </div>
+  <a href="index.html">&larr; Back</a>
 </nav>
+
 <div class="container">
   <img class="logo" src="IMG/4x/Asset 234@4x.png" alt="Logo">
+  
   <section class="project-content">
-    <h2>Busyminded Zine</h2>
-    <p>Project description goes here. This section provides details about the project, the process, and its impact.</p>
-    <img src="IMG/project-image.jpg" alt="Project Image" style="width:100%; margin-top: 20px;">
+    <h2>Mirrored Confessional</h2>
+    <p>
+      A multimedia installation exploring self-reflection, anonymity, and confession. Designed as an interactive space, the project invites participants to engage with their own image while listening to pre-recorded confessions. The mirrored booth blurs the line between the observer and the observed, creating a layered, introspective experience.
+    </p>
+  </section>
+
+  <!-- Image Carousel -->
+  <section class="project-content">
+    <h3>Project Images</h3>
+    <div class="carousel" id="carousel1">
+      <img src="IMG/confesional.jpeg" style="max-width: 500px; margin: auto;" class="active" alt="Confessional Image 1">
+      <img src="IMG/confess2.jpeg" alt="Confessional Image 2">
+    </div>
+    <div class="carousel-buttons">
+      <button onclick="prevSlide()">❮ Prev</button>
+      <button onclick="nextSlide()">Next ❯</button>
+    </div>
+  </section>
+
+
+  <!-- Confessional Booth Audio -->
+  <section class="media-section">
+    <h3>Confessional Audio</h3>
+    <audio controls>
+      <source src="IMG/N Almenar Dr 8.mp3"audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
   </section>
 </div>
+
 <footer>
   &copy; 2025 Avelino Cortina IV. All Rights Reserved.
 </footer>
 
 <script>
-  function openPopup(popupId) {
-    document.getElementById(popupId).style.display = 'block';
+  let currentSlide = 0;
+  const slides = document.querySelectorAll("#carousel1 img");
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
   }
-  function closePopup(popupId) {
-    document.getElementById(popupId).style.display = 'none';
+
+  function prevSlide() {
+    currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+    showSlide(currentSlide);
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+    showSlide(currentSlide);
   }
 </script>
+
 </body>
 </html>
