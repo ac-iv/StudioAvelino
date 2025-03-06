@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Haas+Grotesk+Display:wght@500;700&display=swap');
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+    font-family: 'Haas Grotesk Display', sans-serif;
+  }
+  nav {
+    width: 100%;
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 10px 20px;
+  }
+  nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 10px;
+  }
+  nav .left {
+    text-transform: uppercase;
+    /* Small caps for the left side */
+    font-size: 10px;
+    /* Slightly smaller font size */
+  }
+  nav .right a {
+    text-transform: uppercase;
+    /* Small caps for the right side */
+  }
+  nav a:hover {
+    color: rgb(111, 20, 20);
+  }
+  .container {
+    padding-top: 60px;
+  }
+  .logo {
+    width: 200px;
+    margin: 10px auto;
+  }
+  .gallery {
+    column-count: 3;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    gap: 0rem;
+    padding: 0rem;
+    width: 100%;
+    margin: 10px auto;
+  }
+  .gallery .image img {
+    height: auto;
+    width: 100%;
+  }
+  .image {
+    position: relative;
+    overflow: hidden;
+  }
+  .image a {
+    display: block;
+  }
+  .image:hover img {
+    filter: brightness(50%);
+  }
+  .image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(119, 119, 119, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .image:hover .overlay {
+    opacity: 1;
+  }
+  .image .overlay .text {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    text-align: center;
+  }
+  /* Responsive-ness for different screen-sizes */
+  @media screen and (max-width: 810px) {
+    .gallery {
+      column-count: 3;
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .gallery {
+      column-count: 2;
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .gallery {
+      column-count: 1;
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+    }
+  }
+  footer {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+  /* Popup styles */
+  .popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    text-decoration: none;
+    /* Ensure popup is on top */
+  }
+  /* Style the close button */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="left"></div>
+  <div class="right">
+    <a href="#">HOME</a>
+    <a href="#" onclick="openPopup('aboutPopup')">ABOUT</a>
+    <a href="#" onclick="openPopup('contactPopup')">CONTACT</a>
+  </div>
+</nav>
+<div class="container">
+  <img class="logo" src="IMG/4x/Asset 234@4x.png" alt="Logo">
+  <section class="gallery">
+    <div class="image">
+      <a href="project0.html"> <img src="IMG/RR.png" alt="Project 0">
+        <div class="overlay">
+            <div class="text">The RealReal Web Banners<br>2023</div>
+        </div>
+      </a>
+    </div>
+   
+    <div class="image">
+        <a href="project1.html"> <img src="IMG/1706254006106-ce202647-4afc-4891-b510-9bd73d977edf_3.jpg" alt="Project 1">
+          <div class="overlay">
+            <div class="text">Font Poster Design<br>2024</div>
+          </div>
+        </a>
+      </div>
+   
+      <div class="image">
+        <a href="project2.html"> <img src="IMG/smartmockups_lrwcobhg.jpg" alt="Project 2">
+          <div class="overlay">
+            <div class="text">Neue Haas Grotesk Book<br>2023</div>
+          </div>
+        </a>
+      </div>
+      
+   
+     
+     
+      <div class="image">
+        <a href="project3.html"> <img src="IMG/cover and back2.jpg" alt="Project 3">
+          <div class="overlay">
+            <div class="text">Holy Bible of Homosexuality <br> (Senior Thesis)<br>2024</div>
+          </div>
+        </a>
+      </div>
+     
+      <div class="image">
+        <a href="project6.html"> <img src="IMG/mbs_mockup.jpg" alt="Project 6">
+          <div class="overlay">
+            <div class="text">Mission Bay Shuttle<br>App Resesign<br>2024</div>
+          </div>
+        </a>
+      </div>
+    
+    <div class="image">
+        <a href="project7.html"> <img src="IMG/change1.jpg" alt="Project 7">
+          <div class="overlay">
+            <div class="text">Photography Book<br>2023</div>
+          </div>
+        </a>
+      </div>
+      <div class="image">
+        <a href="project4.html"> <img src="IMG/ketchup-poster.jpg" alt="Project 4">
+          <div class="overlay">
+            <div class="text">Ketchup App Startup<br>2023</div>
+          </div>
+        </a>
+      </div>
+      <div class="image">
+        <a href="project9.html"> <img src="IMG/confesional.jpeg" alt="Project 6">
+          <div class="overlay">
+            <div class="text">The Mirrored Confessional<br>(Senior Thesis)<br>2024</div>
+          </div>
+        </a>
+      </div>
+    
+      <div class="image">
+        <a href="project8.html"> <img src="IMG/bm.png" alt="Project 8">
+          <div class="overlay">
+            <div class="text">Busyminded Zine<br>2024</div>
+          </div>
+        </a>
+      </div>
+   
+  </section>
+  <footer>
+    &copy; 2025 Avelino Cortina IV. All Rights Reserved.
+  </footer>
+  <div id="aboutPopup" class="popup">
+    <span class="close" onclick="closePopup('aboutPopup')">&times;</span>
+    <h2>About</h2>
+    <p>
+      Hey, I'm Avelino. I'm driven by the challenge of turning ideas into compelling visual experiences. Whether it's crafting intuitive UI/UX designs or developing striking brand identities, I believe in the power of design to communicate and connect. I enjoy diving into the details, refining every element until it resonates. My approach is rooted in understanding the user and creating solutions that are both functional and visually engaging. I'm always eager to explore new creative avenues and collaborate on projects that push boundaries.    </p>
+  </div>
+<div id="contactPopup" class="popup">
+  <span class="close" onclick="closePopup('contactPopup')">&times;</span>
+  <h2>Contact</h2>
+  <br>
+  <p>Email: avelinocortinaiv@mac.com</p>
+  <br>
+  <p>Phone: (858) 766-8299</p>
+  <br>
+  <p>Linkedin: <a href="https://www.linkedin.com/in/aciv/">https://www.linkedin.com/in/aciv/</a></p>
+</div>
+<script>
+  function openPopup(popupId) {
+    document.getElementById(popupId).style.display = 'block';
+  }
+  function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+  }
+</script>
+</body>
+</html>

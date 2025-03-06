@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Posters - PDF Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+    width: 100%;
+    padding: 15px 20px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 12px;
+  }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        canvas {
+            background: white;
+            width: 45%;
+            margin-top: -30px;
+
+        }
+        .controls {
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: black;
+            color: white;
+        }
+        .project-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding-right,padding-left: ;: 20px;
+    text-align: left;
+        }
+  .logo {
+    width: 100px;
+    margin: 10px auto;
+  }
+  .logo {
+    display: block;
+    margin: 20px auto;
+}
+.project-content {
+    text-align: center; /* Center everything inside */
+}
+.project-content p, h2 {
+    text-align: left; /* Center everything inside */
+}
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">&larr; Back</a>
+</nav>
+<section class="project-content">
+    <img class="logo" src="IMG/4x/Asset 234@4x.png" alt="Logo">
+    <section class="project-content">
+      <h2>Neue Haas Grotesk Font Book</h2>
+      <p>
+        The Neue Haas Grotesk Font Book is a detailed exploration of the typeface’s design, history, and visual application. This project presents a structured study of Neue Haas Grotesk, showcasing its typographic characteristics through carefully composed layouts. Emphasizing hierarchy, spacing, and contrast, the book serves as both an analytical and visual reference for the typeface, demonstrating its adaptability and impact in contemporary design.
+      </p>
+      
+        
+      <br>
+      <br>
+</section>
+<div class="container">
+  
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    
+</div>
+
+<div class="controls">
+    <button onclick="prevPage()">❮ Prev</button>
+    <button onclick="nextPage()">Next ❯</button>
+</div>
+
+<script>
+    let pdfDoc = null,
+        pageNum = 1,
+        scale = 1.5,
+        canvas1 = document.getElementById('canvas1'),
+        canvas2 = document.getElementById('canvas2'),
+        ctx1 = canvas1.getContext('2d'),
+        ctx2 = canvas2.getContext('2d');
+
+    pdfjsLib.getDocument('pdf/Neue_Book.pdf').promise.then(pdf => {
+        pdfDoc = pdf;
+        renderPages();
+    }).catch(error => {
+        console.error("Error loading PDF:", error);
+    });
+
+    function renderPages() {
+        if (!pdfDoc) return;
+
+        pdfDoc.getPage(pageNum).then(page => {
+            let viewport = page.getViewport({ scale });
+            canvas1.width = viewport.width;
+            canvas1.height = viewport.height;
+            page.render({ canvasContext: ctx1, viewport });
+        }).catch(error => console.error("Error rendering left page:", error));
+
+        if (pageNum + 1 <= pdfDoc.numPages) {
+            pdfDoc.getPage(pageNum + 1).then(page => {
+                let viewport = page.getViewport({ scale });
+                canvas2.width = viewport.width;
+                canvas2.height = viewport.height;
+                page.render({ canvasContext: ctx2, viewport });
+            }).catch(error => console.error("Error rendering right page:", error));
+        }
+    }
+
+    function nextPage() {
+        if (pageNum + 2 <= pdfDoc.numPages) {
+            pageNum += 2;
+            renderPages();
+        }
+    }
+
+    function prevPage() {
+        if (pageNum - 2 > 0) {
+            pageNum -= 2;
+            renderPages();
+        }
+    }
+</script>
+
+</body>
+</html>

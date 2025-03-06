@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Posters</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Haas+Grotesk+Display:wght@500;700&display=swap');
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+    font-family: 'Haas Grotesk Display', sans-serif;
+  }
+  nav {
+    width: 100%;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .container {
+    padding-top: 80px;
+  }
+  .logo {
+    width: 100px;
+    margin: 10px auto;
+  }
+  .project-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+  }
+  .carousel {
+    position: relative;
+    max-width: 100%;
+margin: 20px auto;
+    overflow: hidden;
+  }
+  .carousel img {
+  width: 60%;
+  display: none;
+  margin: auto;
+}
+
+  .carousel img.active {
+    display: block;
+  }
+  .carousel-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .carousel-buttons button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="left">
+    <a href="index.html">&larr; Back</a>
+  </div>
+</nav>
+<div class="container">
+  <img class="logo" src="IMG/4x/Asset 234@4x.png" alt="Logo">
+  <section class="project-content">
+    <h2>Font Posters</h2>
+    <br>
+    <p>
+        This project focuses on the design and composition of font posters, highlighting the form, history, and characteristics of selected typefaces. Each poster presents a typeface in a structured layout, emphasizing its unique features through typography alone. The project explores typographic hierarchy, spacing, and contrast while maintaining a clear and functional design.
+      </p>
+      
+    <br>
+    <br>
+    
+    <div class="carousel">
+      <img src="IMG/coop.jpg" class="active" alt="Banner 1">
+      <img src="IMG/neue.jpg" alt="Banner 2">
+      <img src="IMG/mem.jpg" alt="Banner 3">
+    </div>
+    <div class="carousel-buttons">
+      <button onclick="prevSlide()">❮ Prev</button>
+      <button onclick="nextSlide()">Next ❯</button>
+    </div>
+  </section>
+</div>
+<footer>
+  &copy; 2025 Avelino Cortina IV. All Rights Reserved.
+</footer>
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".carousel img");
+  
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+  }
+  
+  function prevSlide() {
+    currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+    showSlide(currentSlide);
+  }
+  
+  function nextSlide() {
+    currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+    showSlide(currentSlide);
+  }
+</script>
+</body>
+</html>
