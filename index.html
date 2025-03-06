@@ -78,6 +78,13 @@
   .image a {
     display: block;
   }
+  .image img {
+  display: block; /* Ensures no gap under the image */
+  width: 100%;
+  height: auto;
+  vertical-align: top; /* Aligns the image to the top to avoid gaps */
+}
+
   .image:hover img {
     filter: brightness(50%);
   }
@@ -225,7 +232,7 @@
       
     
     <div class="image">
-        <a href="project7.html"> <img src="IMG/change1.jpg" alt="Project 7">
+        <a href="project7.html"> <img src="IMG/artwork-31.png" alt="Project 7">
           <div class="overlay">
             <div class="text">Photography Book<br>2023</div>
           </div>
